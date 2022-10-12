@@ -21,11 +21,24 @@
         /// Type of file.
         /// </summary>
         public InvokeType Type { get; set; } = InvokeType.EXECUTABLE_FILE;
+        /// <summary>
+        /// Permission level, only for Linux or macOS.
+        /// </summary>
+        public PermissionLevel PermissionLevel { get; set; } = PermissionLevel.USER;
     }
 
     public enum InvokeType
     { 
         EXECUTABLE_FILE = 0,
         SHELL
+    }
+
+    /// <summary>
+    /// Permission level, only for Linux or macOS.
+    /// </summary>
+    public enum PermissionLevel
+    {
+        ROOT = 0,
+        USER
     }
 }

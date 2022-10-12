@@ -1,4 +1,5 @@
 ﻿using AdvanceLogLib;
+using I18NLib;
 
 namespace Invoker
 {
@@ -9,14 +10,20 @@ namespace Invoker
         /// Module Name
         /// </summary>
         public const string ModuleName = "Invoker";
+        /// <summary>
+        /// Language Instance.
+        /// </summary>
+        public static ILanguage? Language { get; private set; }
         #endregion
 
         /// <summary>
         /// Main Entrypoint
         /// </summary>
         /// <param name="args"></param>
-        public static void Main(string[] args)
+        public static void Main()
         {
+            Language = I18N.GetInstance().GetLanguage();
+
             Init();
         }
 
@@ -26,7 +33,7 @@ namespace Invoker
         /// </summary>
         private static void Init()
         {
-            WriteLine(LogType.INFO, "Main", "Invoker start...");
+            WriteLine(LogType.INFO, "Main", Language!.INFO_STARTING);
         }
         #endregion
 
