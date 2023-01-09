@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFramework>net5.0</TargetFramework>
+    <TargetFramework>net6.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
   </PropertyGroup>
@@ -14,6 +14,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\..\Code\AdvanceLog\AdvanceLogLib\AdvanceLogLib.csproj" />
     <ProjectReference Include="..\..\..\Code\AdvanceLog\BaseLogLib\BaseLogLib.csproj" />
+    <ProjectReference Include="..\ConfigureLib\ConfigureLib.csproj" />
     <ProjectReference Include="..\Libs\I18NLib\I18NLib.csproj" />
   </ItemGroup>
 

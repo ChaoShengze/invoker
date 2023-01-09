@@ -1,4 +1,4 @@
-﻿namespace Invoker
+﻿namespace ConfigureLib
 {
     /// <summary>
     /// Class of single config.
@@ -28,7 +28,7 @@
     }
 
     public enum InvokeType
-    { 
+    {
         EXECUTABLE_FILE = 0,
         SHELL
     }

@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebDashBoard", "WebDashBoar
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InvokerClient", "InvokerClient\InvokerClient.csproj", "{57F7CFD9-FA41-42DA-B232-BFC81C99EAF8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConfigureLib", "ConfigureLib\ConfigureLib.csproj", "{E3360D3F-353C-461B-961D-B8E38EA899DD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -47,6 +49,10 @@ Global
 		{57F7CFD9-FA41-42DA-B232-BFC81C99EAF8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{57F7CFD9-FA41-42DA-B232-BFC81C99EAF8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{57F7CFD9-FA41-42DA-B232-BFC81C99EAF8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E3360D3F-353C-461B-961D-B8E38EA899DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E3360D3F-353C-461B-961D-B8E38EA899DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E3360D3F-353C-461B-961D-B8E38EA899DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E3360D3F-353C-461B-961D-B8E38EA899DD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -55,6 +61,7 @@ Global
 		{19904779-E389-407E-A838-82EAACDC333F} = {1F8756EB-B00B-4591-8052-9FA8CE452730}
 		{D3F320CA-2C41-4F99-AE21-90332C1B39BF} = {1F8756EB-B00B-4591-8052-9FA8CE452730}
 		{078217E3-1B7B-4588-AA89-46C42CEE4379} = {1F8756EB-B00B-4591-8052-9FA8CE452730}
+		{E3360D3F-353C-461B-961D-B8E38EA899DD} = {1F8756EB-B00B-4591-8052-9FA8CE452730}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {D46E23B6-840C-4173-BC54-80ADDBCA7288}
