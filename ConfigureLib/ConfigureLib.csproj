@@ -6,4 +6,13 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Code\AdvanceLog\AdvanceLogLib\AdvanceLogLib.csproj" />
+    <ProjectReference Include="..\..\..\Code\AdvanceLog\BaseLogLib\BaseLogLib.csproj" />
+  </ItemGroup>
+
 </Project>

@@ -23,7 +23,7 @@ namespace ConfigureLib
         /// <summary>
         /// Port of client.
         /// </summary>
-        public int ClientPort { get; set; } = 8090;
+        public int WsPort { get; set; } = 8090;
         /// <summary>
         /// Delay(ms) of every startup object. Zero means no delay.
         /// </summary>
@@ -41,7 +41,8 @@ namespace ConfigureLib
         /// </summary>
         public List<InvokerConfigItem> InvokerConfigItems { get; set; } = new();
         /// <summary>
-        /// Load config from *.conf file.
+        /// Load config from *.conf file. If file not exists or throw exception,
+        ///  will try to create one.
         /// </summary>
         /// <param name="configPath">Path of *.conf file</param>
         /// <returns></returns>
