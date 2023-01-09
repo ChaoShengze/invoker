@@ -35,6 +35,7 @@
             Language ??= LanguageType switch
                 {
                     ELanguage.ENGLISH => new English(),
+                    ELanguage.CHINESE => new Chinese(),
                     _ => new Chinese(),
                 };
 
