@@ -27,7 +27,7 @@ namespace Invoker
         /// <summary>
         /// List of ProcessState.
         /// </summary>
-        private static List<ProcessState> ProcessStates { get; set; } = new();
+        private static List<ProcessInfo> ProcessInfo { get; set; } = new();
         /// <summary>
         /// Delegate of calling function on Windows.
         /// </summary>
@@ -193,6 +193,15 @@ namespace Invoker
                 process.StandardInput.WriteLine($"su -c \"xhost +\" {Configure.UserName}");
                 process.StandardInput.WriteLine($"su -c \"exec {item.FilePath} {item.Args}\" {Configure.UserName}");
 
+                ProcessInfo.Add(new ProcessInfo()
+                {
+                    FilePath= item.FilePath,
+                    ProcessName = Path.GetFileName(item.FilePath),
+                    ProcessState = process.HasExited 
+                        ? ProcessState.DIE 
+                        : ProcessState.ALIVE
+                });
+
                 return true;
             }
             catch (Exception ex)
@@ -231,6 +240,15 @@ namespace Invoker
                 process.StandardInput.WriteLine($"xhost +");
                 process.StandardInput.WriteLine($"exec {item.FilePath} {item.Args}");
 
+                ProcessInfo.Add(new ProcessInfo()
+                {
+                    FilePath= item.FilePath,
+                    ProcessName = Path.GetFileName(item.FilePath),
+                    ProcessState = process.HasExited
+                        ? ProcessState.DIE
+                        : ProcessState.ALIVE
+                });
+
                 return true;
             }
             catch (Exception ex)
@@ -238,6 +256,11 @@ namespace Invoker
                 WriteLine(LogType.INFO, "StartProcessByBashWithOutRoot", ex.Message);
                 return false;
             }
+        }
+
+        private static void RefreshProcessState()
+        { 
+            
         }
         #endregion
     }

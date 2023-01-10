@@ -1,10 +1,60 @@
 ﻿@page
-@model IndexModel
+@model WebDashBoard.Pages.IndexModel
+
 @{
-    ViewData["Title"] = "Home page";
+    ViewData["Title"] = "Index";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.InvokerConfigItem[0].FilePath)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.InvokerConfigItem[0].Args)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.InvokerConfigItem[0].WorkFolder)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.InvokerConfigItem[0].Type)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.InvokerConfigItem[0].PermissionLevel)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.InvokerConfigItem) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FilePath)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Args)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.WorkFolder)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Type)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PermissionLevel)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.StartupIndex">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.StartupIndex">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.StartupIndex">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

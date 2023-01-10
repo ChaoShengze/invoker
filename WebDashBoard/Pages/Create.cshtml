@@ -1,0 +1,54 @@
+﻿@page
+@model WebDashBoard.Pages.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>InvokerConfigItem</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="InvokerConfigItem.FilePath" class="control-label"></label>
+                <input asp-for="InvokerConfigItem.FilePath" class="form-control" />
+                <span asp-validation-for="InvokerConfigItem.FilePath" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="InvokerConfigItem.Args" class="control-label"></label>
+                <input asp-for="InvokerConfigItem.Args" class="form-control" />
+                <span asp-validation-for="InvokerConfigItem.Args" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="InvokerConfigItem.WorkFolder" class="control-label"></label>
+                <input asp-for="InvokerConfigItem.WorkFolder" class="form-control" />
+                <span asp-validation-for="InvokerConfigItem.WorkFolder" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="InvokerConfigItem.Type" class="control-label"></label>
+                <select asp-for="InvokerConfigItem.Type" class="form-control"></select>
+                <span asp-validation-for="InvokerConfigItem.Type" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="InvokerConfigItem.PermissionLevel" class="control-label"></label>
+                <select asp-for="InvokerConfigItem.PermissionLevel" class="form-control"></select>
+                <span asp-validation-for="InvokerConfigItem.PermissionLevel" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

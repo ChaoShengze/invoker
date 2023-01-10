@@ -72,7 +72,7 @@ namespace ConfigureLib
         {
             try
             {
-                var text = JsonConvert.SerializeObject(configure);
+                var text = JsonConvert.SerializeObject(configure, Formatting.Indented);
                 File.WriteAllText(configPath, text);
                 return true;
             }

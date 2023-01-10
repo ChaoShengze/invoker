@@ -1,4 +1,6 @@
-﻿namespace ConfigureLib
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace ConfigureLib
 {
     /// <summary>
     /// Class of single config.
@@ -8,6 +10,7 @@
         /// <summary>
         /// The startup sequence of the program.
         /// </summary>
+        [Key]
         public int StartupIndex { get; set; } = 0;
         /// <summary>
         /// Path of file.

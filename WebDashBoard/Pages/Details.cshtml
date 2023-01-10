@@ -1,0 +1,49 @@
+﻿@page
+@model WebDashBoard.Pages.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>InvokerConfigItem</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.InvokerConfigItem.FilePath)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.InvokerConfigItem.FilePath)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.InvokerConfigItem.Args)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.InvokerConfigItem.Args)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.InvokerConfigItem.WorkFolder)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.InvokerConfigItem.WorkFolder)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.InvokerConfigItem.Type)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.InvokerConfigItem.Type)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.InvokerConfigItem.PermissionLevel)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.InvokerConfigItem.PermissionLevel)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.InvokerConfigItem?.StartupIndex">Edit</a> |
+    <a asp-page="./Index">Back to List</a>
+</div>

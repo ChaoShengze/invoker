@@ -1,0 +1,52 @@
+﻿@page
+@model WebDashBoard.Pages.DeleteModel
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Delete</h1>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>InvokerConfigItem</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.InvokerConfigItem.FilePath)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.InvokerConfigItem.FilePath)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.InvokerConfigItem.Args)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.InvokerConfigItem.Args)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.InvokerConfigItem.WorkFolder)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.InvokerConfigItem.WorkFolder)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.InvokerConfigItem.Type)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.InvokerConfigItem.Type)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.InvokerConfigItem.PermissionLevel)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.InvokerConfigItem.PermissionLevel)
+        </dd>
+    </dl>
+    
+    <form method="post">
+        <input type="hidden" asp-for="InvokerConfigItem.StartupIndex" />
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a asp-page="./Index">Back to List</a>
+    </form>
+</div>
