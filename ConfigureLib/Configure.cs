@@ -33,10 +33,6 @@ namespace ConfigureLib
         /// </summary>
         public string UserName { get; set; } = string.Empty;
         /// <summary>
-        /// Password of user without root authority.
-        /// </summary>
-        public string UserPassword { get; set; } = string.Empty;
-        /// <summary>
         /// List of items need starting.
         /// </summary>
         public List<InvokerConfigItem> InvokerConfigItems { get; set; } = new();

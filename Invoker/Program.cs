@@ -1,6 +1,7 @@
 ﻿using AdvanceLogLib;
 using ConfigureLib;
 using I18NLib;
+using System.Diagnostics;
 
 namespace Invoker
 {
@@ -27,6 +28,16 @@ namespace Invoker
         /// List of ProcessState.
         /// </summary>
         private static List<ProcessState> ProcessStates { get; set; } = new();
+        /// <summary>
+        /// Delegate of calling function on Windows.
+        /// </summary>
+        /// <param name="item">Configure of process.</param>
+        /// <returns></returns>
+        public delegate bool CallProcessOnWindows(InvokerConfigItem item);
+        /// <summary>
+        /// Callback function of calling function on Windows.
+        /// </summary>
+        private static CallProcessOnWindows? WindowsServiceCallback;
         #endregion
 
         /// <summary>
@@ -114,7 +125,10 @@ namespace Invoker
             AdvanceLog.GetInstance().WriteLog(type, ModuleName, func, desc);
 #endif
         }
-
+        /// <summary>
+        /// Start a process in configure.
+        /// </summary>
+        /// <param name="item">Configure of a process.</param>
         private static void StartItem(InvokerConfigItem item)
         {
             var result = true;
@@ -122,7 +136,17 @@ namespace Invoker
 
             try
             {
-
+                if (Environment.OSVersion.Platform == PlatformID.Win32NT)
+                {
+                    WindowsServiceCallback?.Invoke(item);
+                }
+                else
+                {
+                    if (item.PermissionLevel == PermissionLevel.ROOT)
+                        StartProcessByBashAsRoot(item);
+                    else
+                        StartProcessByBashWithOutRoot(item);
+                }
             }
             catch (Exception ex)
             {
@@ -138,6 +162,82 @@ namespace Invoker
                 info);
 
             WriteLine(LogType.INFO, "StartItem", msg);
+        }
+        /// <summary>
+        /// Start process by bash without root authority on Linux OS.
+        /// </summary>
+        /// <param name="item">Configure of process.</param>
+        private static bool StartProcessByBashWithOutRoot(InvokerConfigItem item)
+        {
+            if (Configure == null)
+                return false;
+
+            try
+            {
+                var processInfo = new ProcessStartInfo()
+                {
+                    FileName = "bash",
+                    CreateNoWindow = true,
+                    UseShellExecute = false,
+                    RedirectStandardInput = true,
+                    RedirectStandardOutput = true,
+                    WorkingDirectory = item.WorkFolder
+                };
+
+                var process = Process.Start(processInfo);
+                if (process == null)
+                    return false;
+
+                process.StandardInput.AutoFlush = true;
+                process.StandardInput.WriteLine($"export DISPLAY=:0.0");
+                process.StandardInput.WriteLine($"su -c \"xhost +\" {Configure.UserName}");
+                process.StandardInput.WriteLine($"su -c \"exec {item.FilePath} {item.Args}\" {Configure.UserName}");
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                WriteLine(LogType.INFO, "StartProcessByBashWithOutRoot", ex.Message);
+                return false;
+            }
+        }
+        /// <summary>
+        /// Start process by bash as root user on Linux OS.
+        /// </summary>
+        /// <param name="item">Configure of process.</param>
+        private static bool StartProcessByBashAsRoot(InvokerConfigItem item)
+        {
+            if (Configure == null)
+                return false;
+
+            try
+            {
+                var processInfo = new ProcessStartInfo()
+                {
+                    FileName = "bash",
+                    CreateNoWindow = true,
+                    UseShellExecute = false,
+                    RedirectStandardInput = true,
+                    RedirectStandardOutput = true,
+                    WorkingDirectory = item.WorkFolder
+                };
+
+                var process = Process.Start(processInfo);
+                if (process == null)
+                    return false;
+
+                process.StandardInput.AutoFlush = true;
+                process.StandardInput.WriteLine($"export DISPLAY=:0.0");
+                process.StandardInput.WriteLine($"xhost +");
+                process.StandardInput.WriteLine($"exec {item.FilePath} {item.Args}");
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                WriteLine(LogType.INFO, "StartProcessByBashWithOutRoot", ex.Message);
+                return false;
+            }
         }
         #endregion
     }

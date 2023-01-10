@@ -12,11 +12,15 @@
         /// <summary>
         /// Path of file.
         /// </summary>
-        public string FilePath { get; set; } = "";
+        public string FilePath { get; set; } = string.Empty;
+        /// <summary>
+        /// Args of starting process.
+        /// </summary>
+        public string Args { get; set; } = string.Empty;
         /// <summary>
         /// Work folder.
         /// </summary>
-        public string WorkFolder { get; set; } = "";
+        public string WorkFolder { get; set; } = string.Empty;
         /// <summary>
         /// Type of file.
         /// </summary>
